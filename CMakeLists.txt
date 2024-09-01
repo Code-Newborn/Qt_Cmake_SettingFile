@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(QsettingFile LANGUAGES CXX)
+project(Qt_Cmake_SettingFile LANGUAGES CXX)
 
 set(CMAKE_PREFIX_PATH "D:\\Qt\\Qt5.14.2\\5.14.2\\mingw73_64")
 
