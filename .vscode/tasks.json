@@ -1,0 +1,58 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure MinGW Debug",
+            "type": "shell",
+            "command": "cmake -S . -B build_mingw_debug -G \"MinGW Makefiles\" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=${config:mingwGcc} -DCMAKE_CXX_COMPILER=${config:mingwGcc} -DCMAKE_PREFIX_PATH=${config:mingwQtRoot}",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure MinGW Release",
+            "type": "shell",
+            "command": "cmake -S . -B build_mingw_release -G \"MinGW Makefiles\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=${config:mingwGcc} -DCMAKE_CXX_COMPILER=${config:mingwGcc} -DCMAKE_PREFIX_PATH=${config:mingwQtRoot}",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build MinGW Debug",
+            "type": "shell",
+            // MinGW Makefiles 是单配置生成器，不需要 --config 也可以
+            "command": "cmake --build build_mingw_debug",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "QTDIR": "${config:mingwQtRoot}",
+                    "PATH": "${config:mingwQtRoot}/bin;${env:PATH}"
+                }
+            },
+            "dependsOn": [
+                "Configure MinGW Debug"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build MinGW Release",
+            "type": "shell",
+            "command": "cmake --build build_mingw_release",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "QTDIR": "${config:mingwQtRoot}",
+                    "PATH": "${config:mingwQtRoot}/bin;${env:PATH}"
+                }
+            },
+            "dependsOn": [
+                "Configure MinGW Release"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        }
+    ]
+}

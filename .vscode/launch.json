@@ -1,0 +1,66 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run MinGW Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            // 注意：可执行文件路径要和 CMake MinGW 构建结果一致
+            "program": "${workspaceFolder}/Debug/Qt_Cmake_SettingFile.exe",
+            "cwd": "${workspaceFolder}/Debug",
+            "preLaunchTask": "Build MinGW Debug",
+            // gdb 调试器路径（从 settings.json 中取）
+            "miDebuggerPath": "${config:mingwGdb}",
+            "MIMode": "gdb",
+            "environment": [
+                {
+                    "name": "PATH",
+                    "value": "${config:mingwQtRoot}/bin;${env:PATH}"
+                },
+                {
+                    "name": "QTDIR",
+                    "value": "${config:mingwQtRoot}"
+                },
+                {
+                    "name": "QT_PLUGIN_PATH",
+                    "value": "${config:mingwQtPlugins}"
+                },
+                {
+                    "name": "QML2_IMPORT_PATH",
+                    "value": "${config:mingwQtQml}"
+                }
+            ],
+            // 可选：是否使用外部控制台
+            "externalConsole": true
+        },
+        {
+            "name": "Run MinGW Release",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Release/Qt_Cmake_SettingFile.exe",
+            "cwd": "${workspaceFolder}/Release",
+            "preLaunchTask": "Build MinGW Release",
+            "miDebuggerPath": "${config:mingwGdb}",
+            "MIMode": "gdb",
+            "environment": [
+                {
+                    "name": "PATH",
+                    "value": "${config:mingwQtRoot}/bin;${env:PATH}"
+                },
+                {
+                    "name": "QTDIR",
+                    "value": "${config:mingwQtRoot}"
+                },
+                {
+                    "name": "QT_PLUGIN_PATH",
+                    "value": "${config:mingwQtPlugins}"
+                },
+                {
+                    "name": "QML2_IMPORT_PATH",
+                    "value": "${config:mingwQtQml}"
+                }
+            ],
+            "externalConsole": true
+        }
+    ]
+}

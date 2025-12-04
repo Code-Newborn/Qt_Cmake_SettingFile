@@ -11,7 +11,8 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
-build/
+.vscode/settings.json
+build*/
 Debug/
 Release/
 *.exe
